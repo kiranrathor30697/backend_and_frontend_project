@@ -5,7 +5,7 @@ import { Col, Image, Row } from 'react-bootstrap'
 export default function Header() {
   return (
     <>
-        <div className="p-3" style={{backgroundColor:"#17202A"}}>
+        <div className="" style={{backgroundColor:"#17202A"}}>
             <div className="container"> 
                 <Row>
                     <Col className="text-white ps-0" md={6} sm={4} xs={2}>

@@ -19,3 +19,9 @@ input#formBasicEmail{
     /* background-color: #979a9c; */
     color: #636364 !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .k_register{
+        width: 70% !important;
+    }
+}
