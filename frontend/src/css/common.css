@@ -15,6 +15,7 @@ input#formBasicEmail{
     display: inline-block !important;
 }
 
-.bg_color{
-    background-color: #979a9c;
+.text_color{
+    /* background-color: #979a9c; */
+    color: #636364 !important;
 }

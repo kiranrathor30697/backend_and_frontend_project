@@ -1,14 +1,15 @@
 const axios = require('axios')
 export const registerApi = async (payload,navigate) => {
-    console.log(payload)
+    // console.log(payload)
     try {
-        const registerData = await axios.post('https://c8f9-182-70-191-68.ngrok.io/api/register',payload)
-        console.log(registerData.status)
+        // const registerData = await axios.post('http//127.0.0.1:9000/api/register',payload)
+        const registerData = await axios.post('https://2db1-223-236-41-72.ngrok.io/api/register',payload)
         if(registerData.status === 201){
             alert('Registration successfully')
             navigate('/login')
         }
     } catch (error) {
+        console.log("erroror")
         console.log(error)
     }
 }

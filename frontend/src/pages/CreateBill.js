@@ -1,9 +1,11 @@
 import React from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { Footer } from '../Layouts/Footer'
 import Header from '../Layouts/Header'
 
 export default function CreateBill() {
+    const navigate = useNavigate()
   return (
     <>
         <Header />
@@ -30,10 +32,16 @@ export default function CreateBill() {
                             <Form.Label className="text-light">Amount</Form.Label>
                             <Form.Control type="text" placeholder="Enter Amount" required/>
                         </Form.Group>
-
-                        <Button variant="secondary" type="submit" className="btn btn-light">
-                            Submit
-                        </Button>
+                        
+                        <div className='d-flex justify-content-center'>
+                            <Button variant="secondary" type="submit" className="btn btn-light  me-3 text-secondary">
+                                Submit
+                            </Button>
+                            <Button variant="secondary" type="submit" className="btn btn-light  ms-3 text-secondary" onClick={()=>{navigate("/")}}>
+                                Back
+                            </Button>
+                        </div>
+                        
                     </Form>
                 </div>
             </Col>

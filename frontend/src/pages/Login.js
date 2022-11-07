@@ -22,9 +22,8 @@ export const Login = () => {
     }
 
     const handleLogin = (e) => {
-        console.log(data)
         e.preventDefault()
-        loginApi(data)
+        loginApi(data,navigate)
     }
 
   return (

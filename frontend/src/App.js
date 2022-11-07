@@ -4,6 +4,7 @@ import { Chat } from './pages/chating/Chat';
 import CreateBill from './pages/CreateBill';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import './css/common.css'
 function App() {
   return (
     <Router>

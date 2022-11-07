@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { registerApi } from '../axios/registerApi'
 import { Footer } from '../Layouts/Footer'
 import Header from '../Layouts/Header'
-import { registerValidation } from './Validation/registerValidation'
+import { registerValidation } from './Validation/validation'
 
 export const Register = () => {
     let navigate = useNavigate();
@@ -55,7 +55,7 @@ export const Register = () => {
         <Row>
             <Col>
                 <div className="d-flex justify-content-center mt-5">
-                    <Form className=" bg_color p-4 rounded shadow-lg">
+                    <Form className=" bg-secondary p-4 rounded shadow-lg">
                         <h5 className='text-light text-center'>Register Form</h5>
 
                         <Form.Group className="mb-1" controlId="formBasicUsername">
@@ -72,7 +72,7 @@ export const Register = () => {
 
                         <Form.Group className="mb-1" controlId="formBasicdob">
                             <Form.Label className="text-light">DateOfBirth</Form.Label>
-                            <Form.Control type="date" name="dob" placeholder="Enter Date Of Birth" onChange={handleChange} />
+                            <Form.Control type="date" className='text_color' name="dob" placeholder="Enter Date Of Birth" onChange={handleChange} />
                         </Form.Group>
                         <div className='text-danger'>{errorMsg.dob}</div>
 
