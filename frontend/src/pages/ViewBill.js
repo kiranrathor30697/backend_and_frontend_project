@@ -19,32 +19,32 @@ export default function ViewBill() {
             <div className='offset-4'>
                 <div className="mt-3 row">
                     <h6 className="col-4">Customer Name </h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].cust_name}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.cust_name}</h6>
                 </div>
 
                 <div className="mt-3 row">
                     <h6 className="col-4">Phone Number </h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].phoneNumber}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.phoneNumber}</h6>
                 </div>
 
                 <div className="mt-3 row">
                     <h6 className="col-4">Address </h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].address}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.address}</h6>
                 </div>
 
                 <div className="mt-3 row">
                     <h6 className="col-4">State</h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].state}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.state}</h6>
                 </div>
 
                 <div className="mt-3 row">
                     <h6 className="col-4">District</h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].dist}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.dist}</h6>
                 </div>
 
                 <div className="mt-3 row">
                     <h6 className="col-4">City</h6>-
-                    <h6 className="col-6 ms-2">{localStorageData[0].city}</h6>
+                    <h6 className="col-6 ms-2">{localStorageData.city}</h6>
                 </div>
 
             </div>

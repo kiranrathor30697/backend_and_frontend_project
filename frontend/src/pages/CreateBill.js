@@ -25,8 +25,6 @@ export default function CreateBill() {
     const [billData, setBillData] = useState(initialState)
     const [err, setErr] = useState([])
 
-    var myData = []
-
     const handleChange = (e) => {
         const { name , value} = e.target
         let newData = {[name]:value}
@@ -49,10 +47,7 @@ export default function CreateBill() {
         const {  error , isValid } = createBillValidation(billData)
         setErr(error)
         if (!isValid) return;
-        myData.push(billData)
-        setBillData(initialState)
-        console.log(myData,"===myData")
-        localStorage.setItem("billdata",JSON.stringify(myData))
+        localStorage.setItem("billdata",JSON.stringify(billData))
         navigate('/viewbill')
 
     }
@@ -71,154 +66,147 @@ export default function CreateBill() {
                     </div>
                 </div>
                 <div className="row">
-{/* 
-                    {
-                        !localStorageData[0].cust_name ?
-                    <> */}
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    Customer Name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="cust_name"
-                                    className="form-control"
-                                    placeholder="Enter Your Name"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.cust_name}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                Customer Name
+                            </label>
+                            <input
+                                type="text"
+                                name="cust_name"
+                                className="form-control"
+                                placeholder="Enter Your Name"
+                                onChange={handleChange}
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.cust_name}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    Phone number
-                                </label>
-                                <input
-                                    type="number"
-                                    name="phoneNumber"
-                                    className="form-control"
-                                    placeholder="Enter Your Phone Number"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.phoneNumber}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                Phone number
+                            </label>
+                            <input
+                                type="number"
+                                name="phoneNumber"
+                                className="form-control"
+                                placeholder="Enter Your Phone Number"
+                                onChange={handleChange}
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.phoneNumber}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    Date
-                                </label>
-                                <input
-                                    // max={new Date().toISOString().split('T')[0]}
-                                    type="text"
-                                    name="date"
-                                    className="form-control"
-                                    onChange={handleChange}
-                                    placeholder="Enter Date"
-                                    onFocus={
-                                        (e)=> {
-                                        e.currentTarget.type = "date";
-                                        e.currentTarget.focus();
-                                        }
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                Date
+                            </label>
+                            <input
+                                // max={new Date().toISOString().split('T')[0]}
+                                type="text"
+                                name="date"
+                                className="form-control"
+                                onChange={handleChange}
+                                placeholder="Enter Date"
+                                onFocus={
+                                    (e)=> {
+                                    e.currentTarget.type = "date";
+                                    e.currentTarget.focus();
                                     }
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.date}</p>
+                                }
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.date}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label className="form-label mb-1 text-white">
-                                    Address
-                                </label>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    className="form-control"
-                                    placeholder="Enter Your Address"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.address}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label className="form-label mb-1 text-white">
+                                Address
+                            </label>
+                            <input
+                                type="text"
+                                name="address"
+                                className="form-control"
+                                placeholder="Enter Your Address"
+                                onChange={handleChange}
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.address}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-1">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    State
-                                </label>
-                                <input
-                                    type="text"
-                                    name="state"
-                                    className="form-control"
-                                    placeholder="Enter Your State"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.state}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-1">
+                            <label
+                                className="form-label mb-1 text-white">
+                                State
+                            </label>
+                            <input
+                                type="text"
+                                name="state"
+                                className="form-control"
+                                placeholder="Enter Your State"
+                                onChange={handleChange}
+                            />
                         </div>
-                        
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    District
-                                </label>
-                                <input
-                                    type="text"
-                                    name="dist"
-                                    className="form-control"
-                                    placeholder="Enter Your District"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.dist}</p>
+                        <p className='text-danger text-center m-0'>{err.state}</p>
+                    </div>
+                    
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                District
+                            </label>
+                            <input
+                                type="text"
+                                name="dist"
+                                className="form-control"
+                                placeholder="Enter Your District"
+                                onChange={handleChange}
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.dist}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    City
-                                </label>
-                                <input
-                                    type="text"
-                                    name="city"
-                                    className="form-control"
-                                    placeholder="Enter Your City"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.city}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                City
+                            </label>
+                            <input
+                                type="text"
+                                name="city"
+                                className="form-control"
+                                placeholder="Enter Your City"
+                                onChange={handleChange}
+                            />
                         </div>
+                        <p className='text-danger text-center m-0'>{err.city}</p>
+                    </div>
 
-                        <div className="col-md-6 col-sm-6 col-xs-6">
-                            <div className="form-group mb-2">
-                                <label
-                                    className="form-label mb-1 text-white">
-                                    Bill creator
-                                </label>
-                                <input
-                                    type="text"
-                                    name="billcreatorname"
-                                    className="form-control"
-                                    placeholder="Enter Bill Creator Name"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p className='text-danger text-center m-0'>{err.billcreatorname}</p>
+                    <div className="col-md-6 col-sm-6 col-xs-6">
+                        <div className="form-group mb-2">
+                            <label
+                                className="form-label mb-1 text-white">
+                                Bill creator
+                            </label>
+                            <input
+                                type="text"
+                                name="billcreatorname"
+                                className="form-control"
+                                placeholder="Enter Bill Creator Name"
+                                onChange={handleChange}
+                            />
                         </div>
-                    {/* </>
-                    :null
-                    } */}
+                        <p className='text-danger text-center m-0'>{err.billcreatorname}</p>
+                    </div>
 
                     <div className="col-md-6 col-sm-6 col-xs-6">
                         <div className="form-group mb-2">
@@ -244,7 +232,7 @@ export default function CreateBill() {
                                 Quantity
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 name="quantity"
                                 className="form-control"
                                 placeholder="Enter Your Quantity"
@@ -261,7 +249,7 @@ export default function CreateBill() {
                                 Price/Unit
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 name="price"
                                 className="form-control"
                                 placeholder="Enter Your Price/Unit"
