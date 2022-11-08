@@ -55,7 +55,7 @@ export const Register = () => {
         <Row>
             <Col>
                 <div className="d-flex justify-content-center mt-5">
-                    <Form className=" bg-secondary p-3 k_register rounded shadow-lg">
+                    <Form className="bg_color p-3 k_register rounded shadow-lg">
                         <h5 className='text-light text-center'>Register Form</h5>
 
                         <Form.Group className="mb-1" controlId="formBasicUsername">

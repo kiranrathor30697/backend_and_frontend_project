@@ -4,7 +4,10 @@ import { Chat } from './pages/chating/Chat';
 import CreateBill from './pages/CreateBill';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import ViewBill from './pages/ViewBill';
 import './css/common.css'
+// import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <Router>
@@ -14,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/header" element={<Header />} />
         <Route path="/createbill" element={<CreateBill />} />
+        <Route path="/viewbill" element={<ViewBill />} />
         <Route path="/chat" element={<Chat />} />
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>

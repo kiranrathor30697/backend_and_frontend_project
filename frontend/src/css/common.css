@@ -16,8 +16,12 @@ input#formBasicEmail{
 }
 
 .text_color{
-    /* background-color: #979a9c; */
     color: #636364 !important;
+}
+
+.bg_color{
+    background-color: #b2b2b4 !important;
+
 }
 
 @media only screen and (max-width: 600px) {

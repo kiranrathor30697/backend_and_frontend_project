@@ -58,14 +58,14 @@ export const registerValidation = (userData) =>{
         } else {
           error.email = "";
         }
-    }
+      }
 
      if(!userData.dob && userData.dob !== undefined){
         error.dob = "Please Enter Date Of Birth"
         isValid = false
-    }else if(userData.dob){
-        error.dob = ""
-    }
+      }else if(userData.dob){
+          error.dob = ""
+      }
 
     if (userData.password !== undefined) {
         const { err, valid } = passwordRegexValid(userData);
@@ -87,6 +87,120 @@ export const registerValidation = (userData) =>{
         error.confirmPassword = '';
     }
 
-
     return { isValid, error}
+}
+
+export const loginValidation = (loginData) =>{
+  let error = {}
+  let isValid = true
+
+  if(loginData.email !== undefined){
+    const { err, valid } = emailValidation(loginData);
+    if (!valid) {
+      error.email = err;
+      isValid = valid;
+    } else {
+      error.email = "";
+    }
+  }
+
+  if(!loginData.password && loginData.password !== undefined){
+    error.password = " Please Enter your Password"
+    isValid = false
+  }else if(loginData.password){
+    error.password = ""
+  }
+
+  return { error , isValid } 
+}
+
+export const createBillValidation = (billData) => {
+  let error = {}
+  let isValid = true
+
+  if(!billData.cust_name && billData.cust_name !== undefined){
+    error.cust_name = " Please Enter Customer Name"
+    isValid = false
+  }else if(billData.cust_name){
+    error.cust_name = ""
+  }
+
+  if(!billData.phoneNumber && billData.phoneNumber !== undefined){
+    error.phoneNumber = " Please Enter Phone Number"
+    isValid = false
+  }else if(billData.phoneNumber){
+    error.phoneNumber = ""
+  }
+
+  if(!billData.date && billData.date !== undefined){
+    error.date = " Please Enter Date"
+    isValid = false
+  }else if(billData.date){
+    error.date = ""
+  }
+
+  if(!billData.address && billData.address !== undefined){
+    error.address = " Please Enter Address"
+    isValid = false
+  }else if(billData.address){
+    error.address = ""
+  }
+
+  if(!billData.state && billData.state !== undefined){
+    error.state = " Please Enter your State"
+    isValid = false
+  }else if(billData.state){
+    error.state = ""
+  }
+
+  if(!billData.dist && billData.dist !== undefined){
+    error.dist = " Please Enter Your District"
+    isValid = false
+  }else if(billData.dist){
+    error.dist = ""
+  }
+
+  if(!billData.city && billData.city !== undefined){
+    error.city = " Please Enter Your City"
+    isValid = false
+  }else if(billData.city){
+    error.city = ""
+  }
+
+  if(!billData.billcreatorname && billData.billcreatorname !== undefined){
+    error.billcreatorname = " Please Enter Bill Creator Name"
+    isValid = false
+  }else if(billData.billcreatorname){
+    error.billcreatorname = ""
+  }
+
+  if(!billData.item && billData.item !== undefined){
+    error.item = " Please Enter Phone Number"
+    isValid = false
+  }else if(billData.item){
+    error.item = ""
+  }
+
+  if(!billData.quantity && billData.quantity !== undefined){
+    error.quantity = " Please Enter Quantity"
+    isValid = false
+  }else if(billData.quantity){
+    error.quantity = ""
+  }
+
+  if(!billData.price && billData.price !== undefined){
+    error.price = " Please Enter Price"
+    isValid = false
+  }else if(billData.price){
+    error.price = ""
+  }
+
+  if(!billData.amount && billData.amount !== undefined){
+    error.amount = " Please Enter Amount"
+    isValid = false
+  }else if(billData.amount){
+    error.amount = ""
+  }
+
+  return { error , isValid }
 }
