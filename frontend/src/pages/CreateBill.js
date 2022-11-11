@@ -56,7 +56,7 @@ export default function CreateBill() {
     <>
         <Header />
         <div className='d-flex justify-content-center mt-5'>
-            <form className='bg_color p-4 rounded w-50' onSubmit={createInvoiceBill}>
+            <form className='bg_color p-4 rounded w-75' onSubmit={createInvoiceBill}>
                 <div className="row">
                     <div className="col-md-12">
                         <h3 className="text-white text-center fw-bold mt-2 mb-3">User Information</h3>
