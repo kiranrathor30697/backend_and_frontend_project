@@ -87,7 +87,6 @@ export default function ViewBill() {
                             localStorageItemData.map((item, id, arr) => {
 
                                 totalAmount.push(item.amount)
-                                // totalAmount.push(item.amount)
                                 return (
                                     <tr key={id}>
                                         <td>{id + 1}</td>
