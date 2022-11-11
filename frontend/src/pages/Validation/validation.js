@@ -174,33 +174,33 @@ export const createBillValidation = (billData) => {
     error.billcreatorname = ""
   }
 
-  if(!billData.item && billData.item !== undefined){
-    error.item = " Please Enter Phone Number"
-    isValid = false
-  }else if(billData.item){
-    error.item = ""
-  }
-
-  if(!billData.quantity && billData.quantity !== undefined){
-    error.quantity = " Please Enter Quantity"
-    isValid = false
-  }else if(billData.quantity){
-    error.quantity = ""
-  }
-
-  if(!billData.price && billData.price !== undefined){
-    error.price = " Please Enter Price"
-    isValid = false
-  }else if(billData.price){
-    error.price = ""
-  }
-
-  if(!billData.amount && billData.amount !== undefined){
-    error.amount = " Please Enter Amount"
-    isValid = false
-  }else if(billData.amount){
-    error.amount = ""
-  }
-
   return { error , isValid }
+}
+
+export const billItemValidation = (billItem) => {
+  let err = {}
+  let valid = true
+
+  if(!billItem.item && billItem.item !== undefined){
+    err.item = " Please Enter Item"
+    valid = false
+  }else if(billItem.item){
+    err.item = ""
+  }
+
+  if(!billItem.quantity && billItem.quantity !== undefined){
+    err.quantity = " Please Enter Quantity"
+    valid = false
+  }else if(billItem.quantity){
+    err.quantity = ""
+  }
+
+  if(!billItem.price && billItem.price !== undefined){
+    err.price = " Please Enter Price"
+    valid = false
+  }else if(billItem.price){
+    err.price = ""
+  }
+
+  return { err , valid}
 }

@@ -1,9 +1,10 @@
 const { User } = require('../../models/userSchema/userSchema')
 const bcrypt = require('bcrypt')
+const { validationResult } = require('express-validator')
+
 const salt = 10;
 const registerController = (req,res)=>{
 
-    const { validationResult } = require('express-validator')
     const error = validationResult(req)
     
     if(error.isEmpty()){

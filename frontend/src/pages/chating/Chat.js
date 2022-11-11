@@ -48,8 +48,6 @@ export const Chat = () => {
   }
   
   const handleClick = (e) =>{
-    console.log('okoko')
-    console.log(e.target)
     
   }
   

@@ -6,6 +6,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import ViewBill from './pages/ViewBill';
 import './css/common.css'
+import BillItem from './pages/BillItem';
 // import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/header" element={<Header />} />
         <Route path="/createbill" element={<CreateBill />} />
         <Route path="/viewbill" element={<ViewBill />} />
+        <Route path="/billitem" element={<BillItem />} />
         <Route path="/chat" element={<Chat />} />
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>

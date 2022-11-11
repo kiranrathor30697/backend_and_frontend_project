@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Footer } from '../Layouts/Footer'
@@ -14,16 +14,13 @@ let initialState = {
     dist:"",
     city:"",
     billcreatorname:"",
-    item:"",
-    quantity:"",
-    price:"",
-    amount:""
 }
 
 export default function CreateBill() {
     const navigate = useNavigate()
     const [billData, setBillData] = useState(initialState)
     const [err, setErr] = useState([])
+    const inputRef = useRef()
 
     const handleChange = (e) => {
         const { name , value} = e.target
@@ -41,28 +38,28 @@ export default function CreateBill() {
         })
     }
 
+    const onNum = () => {
+        inputRef.current.blur()
+    }
+
     const createInvoiceBill = (e) => {
         e.preventDefault();
 
         const {  error , isValid } = createBillValidation(billData)
         setErr(error)
         if (!isValid) return;
-        localStorage.setItem("billdata",JSON.stringify(billData))
-        navigate('/viewbill')
-
+        localStorage.setItem("cust_data",JSON.stringify(billData))
+        navigate('/billitem')
     }
-
-    // const localStorageData = JSON.parse(localStorage.getItem("billdata"))
-    // console.log("+++++",localStorageData[0].cust_name)
      
   return (
     <>
         <Header />
         <div className='d-flex justify-content-center mt-5'>
-            <form className='bg_color p-4 rounded w-75' onSubmit={createInvoiceBill}>
+            <form className='bg_color p-4 rounded w-50' onSubmit={createInvoiceBill}>
                 <div className="row">
                     <div className="col-md-12">
-                        <h3 className="text-white text-center fw-bold mt-2 mb-3">Create invoice Bill</h3>
+                        <h3 className="text-white text-center fw-bold mt-2 mb-3">User Information</h3>
                     </div>
                 </div>
                 <div className="row">
@@ -206,74 +203,6 @@ export default function CreateBill() {
                             />
                         </div>
                         <p className='text-danger text-center m-0'>{err.billcreatorname}</p>
-                    </div>
-
-                    <div className="col-md-6 col-sm-6 col-xs-6">
-                        <div className="form-group mb-2">
-                            <label
-                                className="form-label mb-1 text-white">
-                                Item Name
-                            </label>
-                            <input
-                                type="text"
-                                name="item"
-                                className="form-control"
-                                placeholder="Enter Your Item Name"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <p className='text-danger text-center m-0'>{err.item}</p>
-                    </div>
-
-                    <div className="col-md-6 col-sm-6 col-xs-6">
-                        <div className="form-group mb-2">
-                            <label
-                                className="form-label mb-1 text-white">
-                                Quantity
-                            </label>
-                            <input
-                                type="number"
-                                name="quantity"
-                                className="form-control"
-                                placeholder="Enter Your Quantity"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <p className='text-danger text-center m-0'>{err.quantity}</p>
-                    </div>
-
-                    <div className="col-md-6 col-sm-6 col-xs-6">
-                        <div className="form-group mb-2">
-                            <label
-                                className="form-label mb-1 text-white">
-                                Price/Unit
-                            </label>
-                            <input
-                                type="number"
-                                name="price"
-                                className="form-control"
-                                placeholder="Enter Your Price/Unit"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <p className='text-danger text-center m-0'>{err.price}</p>
-                    </div>
-
-                    <div className="col-md-6 col-sm-6 col-xs-6">
-                        <div className="form-group mb-2">
-                            <label
-                                className="form-label mb-1 text-white">
-                                Amount
-                            </label>
-                            <input
-                                type="number"
-                                name="amount"
-                                className="form-control"
-                                placeholder="Enter Your Amount"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <p className='text-danger text-center m-0'>{err.amount}</p>
                     </div>
 
                     <div className="col-md-12 d-flex justify-content-center mt-3">
