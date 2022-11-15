@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { createBillApi } from '../axios/createBillApi'
 import { Footer } from '../Layouts/Footer'
 import Header from '../Layouts/Header'
 import { createBillValidation } from './Validation/validation'
@@ -47,8 +48,7 @@ export default function CreateBill() {
         const {  error , isValid } = createBillValidation(billData)
         setErr(error)
         if (!isValid) return;
-        localStorage.setItem("cust_data",JSON.stringify(billData))
-        navigate('/billitem')
+        createBillApi(billData,navigate)
     }
      
   return (

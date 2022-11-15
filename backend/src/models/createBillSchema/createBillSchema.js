@@ -1,5 +1,5 @@
 const { Schema } = require("mongoose");
-const { mongoose } = require("../config/db")
+const { mongoose } = require("../../config/db")
 
 let createBillSchema = new Schema({
     cust_name:{
@@ -34,27 +34,27 @@ let createBillSchema = new Schema({
         type:"string",
         required:true
     },
-    item:{
-        type:"string",
-        required:true
-    },
-    quantity:{
-        type:"number",
-        required:true
-    },
-    price:{
-        type:"number",
-        required:true
-    },
-    amount:{
-        type:"number",
-        required:true
-    }
+    // item:{
+    //     type:"string",
+    //     required:true
+    // },
+    // quantity:{
+    //     type:"number",
+    //     required:true
+    // },
+    // price:{
+    //     type:"number",
+    //     required:true
+    // },
+    // amount:{
+    //     type:"number",
+    //     required:true
+    // }
     },{
         timestamps:true
     }
 )
 
-const BILLDATA = mongoose.model('Bill',createBillSchema)
+const Cust_Info = mongoose.model('customerInfo',createBillSchema)
 
-module.exports = { BILLDATA } 
+module.exports = { Cust_Info } 

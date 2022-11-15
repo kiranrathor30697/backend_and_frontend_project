@@ -9,9 +9,10 @@ var totalAmount = []
 
 export default function ViewBill() {
     const navigate = useNavigate();
-    const localStorageCustData = JSON.parse(localStorage.getItem("cust_data"))
-    const localStorageItemData = JSON.parse(localStorage.getItem("itemData"))
-    // const [viewData, setViewData] = useState(localStorageItemData)
+    const custData = JSON.parse(localStorage.getItem("cust_data"))
+
+    const itemData = JSON.parse(localStorage.getItem("itemData"))
+    // const [viewData, setViewData] = useState(itemData)
 
     const genrateBill = () => {
         window.print()
@@ -39,32 +40,32 @@ export default function ViewBill() {
                 <div className='offset-4'>
                     <div className="mt-3 row">
                         <h6 className="col-4">Customer Name </h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.cust_name}</h6>
+                        <h6 className="col-6 ms-2">{custData.cust_name}</h6>
                     </div>
 
                     <div className="mt-3 row">
                         <h6 className="col-4">Phone Number </h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.phoneNumber}</h6>
+                        <h6 className="col-6 ms-2">{custData.phoneNumber}</h6>
                     </div>
 
                     <div className="mt-3 row">
                         <h6 className="col-4">Address </h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.address}</h6>
+                        <h6 className="col-6 ms-2">{custData.address}</h6>
                     </div>
 
                     <div className="mt-3 row">
                         <h6 className="col-4">State</h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.state}</h6>
+                        <h6 className="col-6 ms-2">{custData.state}</h6>
                     </div>
 
                     <div className="mt-3 row">
                         <h6 className="col-4">District</h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.dist}</h6>
+                        <h6 className="col-6 ms-2">{custData.dist}</h6>
                     </div>
 
                     <div className="mt-3 row">
                         <h6 className="col-4">City</h6>-
-                        <h6 className="col-6 ms-2">{localStorageCustData.city}</h6>
+                        <h6 className="col-6 ms-2">{custData.city}</h6>
                     </div>
                 </div>
 
@@ -84,7 +85,7 @@ export default function ViewBill() {
                     </thead>
                     <tbody>
                         {
-                            localStorageItemData.map((item, id, arr) => {
+                            itemData.map((item, id, arr) => {
 
                                 totalAmount.push(item.amount)
                                 return (
@@ -101,7 +102,7 @@ export default function ViewBill() {
                         <tr>
                             <td colSpan="4">Total</td>
                             <td>
-                                {totalItem(localStorageItemData)}
+                                {totalItem(itemData)}
                             </td>
                         </tr>
                         <tr>
