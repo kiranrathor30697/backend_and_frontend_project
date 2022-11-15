@@ -83,7 +83,7 @@ export const registerValidation = (userData) =>{
     }else if (userData.confirmPassword !== userData.password && userData.confirmPassword){
         error.confirmPassword = "Does not match Confirm Password";
         isValid = false;
-    }  else if(userData.confirmPassword == userData.password && userData.confirmPassword && userData.password){
+    }  else if(userData.confirmPassword === userData.password && userData.confirmPassword && userData.password){
         error.confirmPassword = '';
     }
 

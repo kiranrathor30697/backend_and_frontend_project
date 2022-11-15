@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Col, Form, Row, Toast } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-// import { toast, ToastContainer } from 'react-toastify'
 import { loginApi } from '../axios/loginApi'
 import { Footer } from '../Layouts/Footer'
 import Header from '../Layouts/Header'

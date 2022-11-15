@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Footer } from '../Layouts/Footer'
 import Header from '../Layouts/Header'
@@ -38,9 +37,9 @@ export default function CreateBill() {
         })
     }
 
-    const onNum = () => {
-        inputRef.current.blur()
-    }
+    // const onNum = () => {
+    //     inputRef.current.blur()
+    // }
 
     const createInvoiceBill = (e) => {
         e.preventDefault();
@@ -56,7 +55,7 @@ export default function CreateBill() {
     <>
         <Header />
         <div className='d-flex justify-content-center mt-5'>
-            <form className='bg_color p-4 rounded w-75' onSubmit={createInvoiceBill}>
+            <form className='bg_color k_register p-4 rounded w-75' onSubmit={createInvoiceBill}>
                 <div className="row">
                     <div className="col-md-12">
                         <h3 className="text-white text-center fw-bold mt-2 mb-3">User Information</h3>
@@ -90,7 +89,7 @@ export default function CreateBill() {
                                 type="number"
                                 name="phoneNumber"
                                 className="form-control"
-                                placeholder="Enter Your Phone Number"
+                                placeholder="Enter Your Phone No"
                                 onChange={handleChange}
                             />
                         </div>
