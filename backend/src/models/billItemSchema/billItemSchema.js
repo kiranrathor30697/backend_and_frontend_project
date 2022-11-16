@@ -45,9 +45,8 @@ let billItemSchema = new Schema({
     price:{
         type:"number",
         required:true
-    },
-    amount:{
-        type:"number",
+    },custId:{
+        type:"string",
         required:true
     }
     },{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { billItemApi } from '../axios/billItemApi';
 import { Footer } from '../Layouts/Footer';
 import Header from '../Layouts/Header';
 import { billItemValidation } from './Validation/validation';
@@ -39,7 +40,12 @@ export default function BillItem() {
         setError(err)
         if (!valid) return;
 
+        const getCustData = JSON.parse(localStorage.getItem("cust_data"))
+        
+        console.log("billllllldata",billItem)
+
         data.push(billItem)
+        billItemApi(billItem,getCustData._id)
         localStorage.setItem("itemData",JSON.stringify(data))
         navigate("/viewbill")
     }
