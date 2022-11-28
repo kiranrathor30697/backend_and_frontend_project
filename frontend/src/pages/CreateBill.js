@@ -83,7 +83,7 @@ export default function CreateBill() {
                         <div className="form-group mb-2">
                             <label
                                 className="form-label mb-1 text-white">
-                                Phone number
+                                Phone Number
                             </label>
                             <input
                                 type="number"

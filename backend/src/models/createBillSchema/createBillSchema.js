@@ -3,58 +3,47 @@ const { mongoose } = require("../../config/db")
 
 let createBillSchema = new Schema({
     cust_name:{
-        type:"string",
+        type:String,
         required:true
     },
     phoneNumber:{
-        type:"string",
+        type:String,
         required:true
     },
     date:{
-        type:"string",
+        type:String,
         required:true
     },
     address:{
-        type:"string",
+        type:String,
         required:true
     },
     state:{
-        type:"string",
+        type:String,
         required:true
     },
     dist:{
-        type:"string",
+        type:String,
         required:true
     },
     city:{
-        type:"string",
+        type:String,
         required:true
     },
     billcreatorname:{
-        type:"string",
+        type:String,
         required:true
     },
-    // item:{
-    //     type:"string",
-    //     required:true
-    // },
-    // quantity:{
-    //     type:"number",
-    //     required:true
-    // },
-    // price:{
-    //     type:"number",
-    //     required:true
-    // },
-    // amount:{
-    //     type:"number",
-    //     required:true
+    // _custId:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Bill_Item"
     // }
+   
     },{
         timestamps:true
     }
 )
 
-const Cust_Info = mongoose.model('customerInfo',createBillSchema)
+const CustomerInformation = mongoose.model('CustomerInformation',createBillSchema)
 
-module.exports = { Cust_Info } 
+module.exports = { CustomerInformation } 

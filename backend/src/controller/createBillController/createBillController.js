@@ -1,14 +1,15 @@
 const { validationResult } = require("express-validator")
-const { Cust_Info } = require("../../models/createBillSchema/createBillSchema")
+const { CustomerInformation } = require("../../models/createBillSchema/createBillSchema")
 
 const createBillController = (req,res) => {
     const error = validationResult(req)
     if(!error.isEmpty()){
-        let myCust_Info = new Cust_Info(req.body)
+        console.log("req.body",req.body)
+        let myCustomerInformation = new CustomerInformation(req.body)
 
-        myCust_Info.save()
+        myCustomerInformation.save()
         .then((data)=>{
-                // const {createdAt,updatedAt,...total} = myCust_Info
+                // const {createdAt,updatedAt,...total} = myCustomerInformation
             delete data._doc.createdAt
             delete data._doc.updatedAt
             delete data._doc.__v

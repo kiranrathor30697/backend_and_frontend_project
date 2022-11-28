@@ -1,8 +1,8 @@
 import axios from "axios"
 
 export const billItemApi = async (payload,id) => {
-   payload.custId  = id
-    console.log("payload",payload)
+   payload._custId  = id
+   console.log("lllllllll",payload,id)
     try {
         const result = await axios.post("http://localhost:8000/api/billItem",payload)
 
