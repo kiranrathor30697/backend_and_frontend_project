@@ -4,7 +4,7 @@ const { CustomerInformation } = require("../../models/createBillSchema/createBil
 const createBillController = (req,res) => {
     const error = validationResult(req)
     if(!error.isEmpty()){
-        console.log("req.body",req.body)
+        // console.log("req.body",req.body)
         let myCustomerInformation = new CustomerInformation(req.body)
 
         myCustomerInformation.save()

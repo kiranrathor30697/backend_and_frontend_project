@@ -53,7 +53,7 @@ export default function BillItem() {
     <>
         <Header />
         <div className='d-flex justify-content-center mt-5'>
-            <form className='bg_color p-4 rounded w-75' onSubmit={createBillItem}>
+            <form className='bg_color p-4 rounded w-75 k_register' onSubmit={createBillItem}>
                 <div className="row">
                     <div className="col-md-12">
                         <h3 className="text-white text-center fw-bold mt-2 mb-3">Bill Item</h3>

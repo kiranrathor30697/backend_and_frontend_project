@@ -1,7 +1,9 @@
 import moment from 'moment';
+import { useEffect } from 'react';
 // import React, { useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
+import { viewBillApi } from '../axios/viewBillApi';
 import Header from '../Layouts/Header'
 
 
@@ -10,15 +12,33 @@ var totalAmount = []
 export default function ViewBill() {
     const navigate = useNavigate();
     const custData = JSON.parse(localStorage.getItem("cust_data"))
-
     const itemData = JSON.parse(localStorage.getItem("itemData"))
+    const custInfoData = JSON.parse(localStorage.getItem("getCustInfo"))
+    console.log(custData._id,"custData")
+    console.log(custInfoData,"custInfoData")
     // const [viewData, setViewData] = useState(itemData)
+    var data = []
+     useEffect(()=>{
+        viewBillApi()
+        console.log("==>>>",data)
+        customerData()
+    },[])
 
+    const customerData = () => {
+        custInfoData.map(cv=>{
+            // console.log(cv._id)
+            if(custData._id === cv._id){
+                console.log(true)
+            }
+        })
+    }
+    
     const genrateBill = () => {
         window.print()
         // localStorage.clear()
         // navigate("/")
     }
+
     const totalItem = (data) => {
         if (Array.isArray(data)) {
             let totalAmount = 0;
@@ -86,7 +106,6 @@ export default function ViewBill() {
                     <tbody>
                         {
                             itemData.map((item, id, arr) => {
-
                                 totalAmount.push(item.amount)
                                 return (
                                     <tr key={id}>
