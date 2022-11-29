@@ -1,39 +1,7 @@
 const { Schema } = require("mongoose");
 const { mongoose } = require("../../config/db")
 
-let billItemSchema = new Schema({
-    // cust_name:{
-    //     type:String,
-    //     required:true
-    // },
-    // phoneNumber:{
-    //     type:String,
-    //     required:true
-    // },
-    // date:{
-    //     type:String,
-    //     required:true
-    // },
-    // address:{
-    //     type:String,
-    //     required:true
-    // },
-    // state:{
-    //     type:String,
-    //     required:true
-    // },
-    // dist:{
-    //     type:String,
-    //     required:true
-    // },
-    // city:{
-    //     type:String,
-    //     required:true
-    // },
-    // billcreatorname:{
-    //     type:String,
-    //     required:true
-    // },
+let billItemSchema = new mongoose.Schema({
     item:{
         type:String,
         required:true
@@ -48,13 +16,13 @@ let billItemSchema = new Schema({
     },
     _custId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "customerInformation"
+        ref: "CustomerInformation"
     }
     },{
         timestamps:true
     }
 )
 
-const Bill_Item = mongoose.model('Bill_Item',billItemSchema)
+const BillItem = mongoose.model('BillItem',billItemSchema)
 
-module.exports = { Bill_Item } 
+module.exports = { BillItem } 

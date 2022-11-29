@@ -36,7 +36,7 @@ let createBillSchema = new Schema({
     },
     // _custId:{
     //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Bill_Item"
+    //     ref: "BillItem"
     // }
    
     },{

@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator")
-const { Bill_Item } = require("../../models/billItemSchema/billItemSchema")
+const { BillItem } = require("../../models/billItemSchema/billItemSchema")
 
 const billItemController = async (req,res) => {
     const error = validationResult(req)
@@ -8,9 +8,9 @@ const billItemController = async (req,res) => {
     if(!error.isEmpty()){
         try {
             // res.send("billItemController,okokokokokokok")
-            const {item,quantity,price,_custId} = req.body
+            // const {item,quantity,price,_custId} = req.body
 
-            let billItemData = new Bill_Item({item,quantity,price,_custId})
+            let billItemData = new BillItem(req.body)
 
             // console.log(billItemData,"billItemData")
 

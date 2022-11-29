@@ -1,22 +1,26 @@
-const { Bill_Item } = require("../../models/billItemSchema/billItemSchema");
+const { BillItem } = require("../../models/billItemSchema/billItemSchema");
+const { CustomerInformation } = require("../../models/createBillSchema/createBillSchema");
 
 const customerInfoController = async (req,res) => {
     // res.send("dshjfhsdf")
     try {
-        await Bill_Item.aggregate([
+        await CustomerInformation.aggregate([
             {
                 '$lookup':{
-                    'from':'customerInformations',//other table name
+                    'from':'billitems',//other table name
                     'localField':'_id',//name of main table field 
                     'foreignField': '_custId',//name of sub table field
                     'as':'info'
-                }
-            }  
+                }   
+            },{
+                $unwind: "$info",
+            }
         ]).exec(function(err, result){
             if(err){
               console.log(err);
             } else {
               console.log(result);
+              res.send(result)
             }
          } )
     } catch (error) {
