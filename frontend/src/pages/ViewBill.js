@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // import React, { useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
@@ -14,36 +14,36 @@ export default function ViewBill() {
     const custData = JSON.parse(localStorage.getItem("cust_data"))
     const itemData = JSON.parse(localStorage.getItem("itemData"))
     const custInfoData = JSON.parse(localStorage.getItem("getCustInfo"))
-    console.log(custData._id,"custData")
-    console.log(custInfoData,"custInfoData")
-    // const [viewData, setViewData] = useState(itemData)
-    var data = []
-     useEffect(()=>{
-        viewBillApi()
-        console.log("==>>>",data)
-        customerData()
-    },[])
+    const [viewData, setViewData] = useState()
 
-    const customerData = () => {
-        custInfoData.map(cv=>{
-            // console.log(cv._id)
-            if(custData._id === cv._id){
-                console.log(true)
-            }
-        })
-    }
-    
+    useEffect(() => {
+
+        viewBillApi()
+
+    }, [])
+
+    useEffect(() => {
+        items()
+    }, [custInfoData])
     const genrateBill = () => {
         window.print()
         // localStorage.clear()
         // navigate("/")
     }
 
+    const items = () => {
+        let item = custInfoData.filter((ele) => {
+            return ele._id === custData._id
+        })
+        setViewData({ ...viewData, item })
+    }
+
     const totalItem = (data) => {
+        console.log(data, "ddddddddddddddd")
         if (Array.isArray(data)) {
-            let totalAmount = 0;
+            totalAmount = 0;
             for (let i = 0; i < data.length; i++) {
-                totalAmount += Number(data[i].quantity) * Number(data[i].price)
+                totalAmount += Number(data[i].info.quantity) * Number(data[i].info.price)
             }
             return totalAmount;
         }
@@ -105,6 +105,20 @@ export default function ViewBill() {
                     </thead>
                     <tbody>
                         {
+                            custInfoData.filter((ele) => {
+                                return ele._id === custData._id
+                            }).map((item, id, arr) => {
+                                return <tr key={id}>
+                                    <td>{id + 1}</td>
+                                    <td>{item.info.item}</td>
+                                    <td>{item.info.quantity}</td>
+                                    <td>{item.info.price}</td>
+                                    <td>{item.info.price * item.info.quantity}</td>
+                                </tr>
+                            })
+                        }
+
+                        {/* {
                             itemData.map((item, id, arr) => {
                                 totalAmount.push(item.amount)
                                 return (
@@ -117,11 +131,14 @@ export default function ViewBill() {
                                     </tr>
                                 )
                             })
-                        }
+                        } */}
                         <tr>
                             <td colSpan="4">Total</td>
                             <td>
-                                {totalItem(itemData)}
+                                {/* {totalItem(itemData)} */}
+                                {
+                                    totalItem(viewData)
+                                }
                             </td>
                         </tr>
                         <tr>
