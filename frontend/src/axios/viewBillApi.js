@@ -1,10 +1,10 @@
 import axios from "axios";
 
+let details
 export const viewBillApi = async () => {
     try {
-        const data = await axios.get('http://localhost:8000/api/customerInfo')
-         console.log(data.data,"dadada")
-        localStorage.setItem("getCustInfo",JSON.stringify(data.data))
+         details = await axios.get('http://localhost:8000/api/customerInfo')
+         return details
     } catch (error) {
         console.error(error);
     }

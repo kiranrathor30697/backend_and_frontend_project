@@ -6,7 +6,6 @@ import { Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { viewBillApi } from '../axios/viewBillApi';
 import Header from '../Layouts/Header'
-import BillItem from './BillItem';
 
 
 var totalAmount = []
@@ -14,36 +13,55 @@ var totalAmount = []
 export default function ViewBill() {
     const navigate = useNavigate();
     const custData = JSON.parse(localStorage.getItem("cust_data"))
-    const itemData = JSON.parse(localStorage.getItem("itemData"))
-    // const custInfoData = JSON.parse(localStorage.getItem("getCustInfo"))
     const [allData, setAllData] = useState([])
     const [viewData, setViewData] = useState([])
 
-    useEffect(() => {
-        viewBillApi()
+    useEffect( function() {
+        // viewBillApi()
+        // var details  = await viewBillApi();
+        // // debugger
+        // setAllData(details.data)
+        // console.log(details?.data);
+
+        //     let item = details.data.filter((ele) => {
+        //         return ele._id === custData._id
+        //     })
+        //     setViewData(item)
+        func()
+
     }, [])
 
-    const viewBillApi = async () => {
-        try {
-            const data = await axios.get('http://localhost:8000/api/customerInfo')
-             setAllData(data.data)
+    const func = async () => {
+        var details  = await viewBillApi();
+        // debugger
+        setAllData(details.data)
+        console.log(details?.data);
 
-            let item = data.data.filter((ele) => {
+            let item = details.data.filter((ele) => {
                 return ele._id === custData._id
             })
             setViewData(item)
-
-            //  items()
-            // localStorage.setItem("getCustInfo",JSON.stringify(data.data))
-        } catch (error) {
-            console.error(error);
-        }
     }
 
-    console.log(viewData,"viewData,viewData")
+    // const viewBillApi = async () => {
+    //     try {
+    //         const data = await axios.get('http://localhost:8000/api/customerInfo')
+    //          setAllData(data.data)
 
-    const addItem = () =>{
-        navigate("/billitem") 
+    //         let item = data.data.filter((ele) => {
+    //             return ele._id === custData._id
+    //         })
+    //         setViewData(item)
+
+    //         //  items()
+    //         // localStorage.setItem("getCustInfo",JSON.stringify(data.data))
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+    const addItem = () => {
+        navigate("/billitem")
     }
     const genrateBill = () => {
         window.print()
