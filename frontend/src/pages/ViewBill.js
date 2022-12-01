@@ -17,26 +17,12 @@ export default function ViewBill() {
     const [viewData, setViewData] = useState([])
 
     useEffect( function() {
-        // viewBillApi()
-        // var details  = await viewBillApi();
-        // // debugger
-        // setAllData(details.data)
-        // console.log(details?.data);
-
-        //     let item = details.data.filter((ele) => {
-        //         return ele._id === custData._id
-        //     })
-        //     setViewData(item)
         func()
-
     }, [])
 
     const func = async () => {
         var details  = await viewBillApi();
-        // debugger
         setAllData(details.data)
-        console.log(details?.data);
-
             let item = details.data.filter((ele) => {
                 return ele._id === custData._id
             })
@@ -68,13 +54,6 @@ export default function ViewBill() {
         // localStorage.clear()
         // navigate("/")
     }
-
-    //  const items = () => {
-    //     item = allData.filter((ele) => {
-    //         return ele._id === custData._id
-    //     })
-    //     setViewData(item)
-    // }
 
     const totalItem = (data) => {
         if (Array.isArray(data)) {
