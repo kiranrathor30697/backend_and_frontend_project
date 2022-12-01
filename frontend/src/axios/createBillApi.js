@@ -8,7 +8,6 @@ export const createBillApi = async (payload,navigate) => {
         if(result.status === 200){
             localStorage.setItem("cust_data",JSON.stringify(result.data.data))
             navigate('/billitem')
-            console.log(result.data)
         }
     } catch (error) {
         console.log(error)

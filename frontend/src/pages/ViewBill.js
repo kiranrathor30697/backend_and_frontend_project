@@ -1,3 +1,4 @@
+import axios from 'axios';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 // import React, { useState } from 'react'
@@ -5,6 +6,7 @@ import { Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { viewBillApi } from '../axios/viewBillApi';
 import Header from '../Layouts/Header'
+import BillItem from './BillItem';
 
 
 var totalAmount = []
@@ -13,33 +15,50 @@ export default function ViewBill() {
     const navigate = useNavigate();
     const custData = JSON.parse(localStorage.getItem("cust_data"))
     const itemData = JSON.parse(localStorage.getItem("itemData"))
-    const custInfoData = JSON.parse(localStorage.getItem("getCustInfo"))
-    const [viewData, setViewData] = useState()
+    // const custInfoData = JSON.parse(localStorage.getItem("getCustInfo"))
+    const [allData, setAllData] = useState([])
+    const [viewData, setViewData] = useState([])
 
     useEffect(() => {
-
         viewBillApi()
-
     }, [])
 
-    useEffect(() => {
-        items()
-    }, [custInfoData])
+    const viewBillApi = async () => {
+        try {
+            const data = await axios.get('http://localhost:8000/api/customerInfo')
+             setAllData(data.data)
+
+            let item = data.data.filter((ele) => {
+                return ele._id === custData._id
+            })
+            setViewData(item)
+
+            //  items()
+            // localStorage.setItem("getCustInfo",JSON.stringify(data.data))
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    console.log(viewData,"viewData,viewData")
+
+    const addItem = () =>{
+        navigate("/billitem") 
+    }
     const genrateBill = () => {
         window.print()
         // localStorage.clear()
         // navigate("/")
     }
 
-    const items = () => {
-        let item = custInfoData.filter((ele) => {
-            return ele._id === custData._id
-        })
-        setViewData({ ...viewData, item })
-    }
+    //  const items = () => {
+    //     item = allData.filter((ele) => {
+    //         return ele._id === custData._id
+    //     })
+    //     setViewData(item)
+    // }
 
     const totalItem = (data) => {
-        console.log(data, "ddddddddddddddd")
         if (Array.isArray(data)) {
             totalAmount = 0;
             for (let i = 0; i < data.length; i++) {
@@ -47,7 +66,6 @@ export default function ViewBill() {
             }
             return totalAmount;
         }
-        return 0;
     }
     return (
         <>
@@ -90,7 +108,7 @@ export default function ViewBill() {
                 </div>
 
                 <div className="d-flex justify-content-end">
-                    <button className='btn btn-success' onClick={() => { navigate("/billitem") }}>Add item</button>
+                    <button className='btn btn-success' onClick={() => { addItem() }}>Add item</button>
                 </div>
 
                 <Table striped bordered hover className="mt-5">
@@ -105,7 +123,7 @@ export default function ViewBill() {
                     </thead>
                     <tbody>
                         {
-                            custInfoData.filter((ele) => {
+                            allData.filter((ele) => {
                                 return ele._id === custData._id
                             }).map((item, id, arr) => {
                                 return <tr key={id}>
@@ -142,7 +160,7 @@ export default function ViewBill() {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="">
+                            <td colSpan="5">
                                 <button className='btn btn-secondary bg-secondary' onClick={genrateBill}>Generate Bill</button>
                             </td>
                         </tr>
