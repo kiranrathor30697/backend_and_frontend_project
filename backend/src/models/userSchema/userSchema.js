@@ -22,6 +22,9 @@ let userSchema = new Schema({
                                 confirmPassword:{
                                     type: String,
                                     minLength:8
+                                },
+                                confirmationCode:{
+                                    
                                 }
                                 },{
                                     timestamps:true
