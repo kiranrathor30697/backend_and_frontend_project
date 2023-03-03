@@ -20,4 +20,7 @@ app.use('/api',customerBillInfoRoute)
 
 app.listen(port,()=>{
     console.log('The server running on this port ',port)
+    app.get("/",(req,res)=>{
+        res.send("<h1>Server is Running on Port 8000</h1>")
+    })
 })
